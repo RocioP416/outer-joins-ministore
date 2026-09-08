@@ -14,8 +14,8 @@ v.cantidad
 FROM productos p
 left join ventas v
 on p.producto_id=v.producto_id
-order by cantidad
-
+WHERE v.venta_id IS NULL
+  
 -- ── CONSULTA 2: RIGHT JOIN ────────────────
 -- Pregunta de negocio: ¿Existen ventas registradas con productos
 -- que no figuran en nuestro catálogo? (posible error de carga de datos)
@@ -40,4 +40,4 @@ v.venta_id,
 v.fecha_venta
 FROM productos p
 FULL OUTER JOIN ventas v
-ON p.producto_id=v.venta_id
+ON p.producto_id = v.producto_id
